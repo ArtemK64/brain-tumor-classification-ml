@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 model = keras.models.load_model('models/brain_tumor_classifier.keras')
 
-CATEGORIES = ['no_tumor', 'pituitary_tumor', 'meningioma_tumor', 'glioma_tumor']
+CATEGORIES = ['Без опухоли', 'Опухоль гипофиза', 'Менингиома', 'Глиома']
 
 def predict_image(img):
     img = Image.open(img).convert('RGB')
@@ -30,10 +30,11 @@ def predict():
     prediction = predict_image(img)
     predicted_category_index = np.argmax(prediction)
     predicted_category = CATEGORIES[predicted_category_index]
+    confidence = float(prediction[0][predicted_category_index]) * 100
 
     response = {
         'prediction': predicted_category,
-        'probabilities': prediction[0].tolist()
+        'confidence': confidence
     }
 
     return jsonify(response)

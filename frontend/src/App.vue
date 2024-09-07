@@ -1,7 +1,9 @@
 <template>
   <div class="app">
-    <ImageUploader @prediction="updateResult" />
-    <PredictionResult :result="predictionResult" />
+    <div class="container">
+      <ImageUploader @prediction="updateResult" />
+      <PredictionResult :result="predictionResult" />
+    </div>
   </div>
 </template>
 
@@ -28,7 +30,14 @@ export default {
 </script>
 
 <style scoped>
-.home {
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
