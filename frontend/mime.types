@@ -1,0 +1,17 @@
+types {
+    text/html html htm;
+    text/css css;
+    text/xml xml;
+    image/gif gif;
+    image/jpeg jpeg jpg;
+    image/png png;
+    application/javascript js;
+    application/json json;
+    application/manifest+json webmanifest;
+    application/octet-stream bin exe;
+    font/woff woff;
+    font/woff2 woff2;
+    font/ttf ttf;
+    font/otf otf;
+    application/x-font-ttf ttf;
+}

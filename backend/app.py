@@ -4,7 +4,10 @@ import numpy as np
 import io
 from PIL import Image
 
+from flask_cors import CORS
+
 app = Flask(__name__)
+CORS(app)
 
 model = keras.models.load_model('models/brain_tumor_classifier.keras')
 
@@ -27,7 +30,11 @@ def predict():
     file = request.files['image']
     img = io.BytesIO(file.read())
 
-    prediction = predict_image(img)
+    try:
+        prediction = predict_image(img)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
     predicted_category_index = np.argmax(prediction)
     predicted_category = CATEGORIES[predicted_category_index]
     confidence = float(prediction[0][predicted_category_index]) * 100
@@ -40,4 +47,4 @@ def predict():
     return jsonify(response)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
