@@ -2,6 +2,8 @@
 
 Приложение для классификации снимков МРТ головного мозга с использованием алгоритма CNN.
 
+Набор данных: https://www.kaggle.com/datasets/sartajbhuvaji/brain-tumor-classification-mri/data
+
 ## Запуск приложения
 
 ### 1. Клонируйте репозиторий
